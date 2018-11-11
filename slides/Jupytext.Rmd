@@ -1,0 +1,25 @@
+---
+title: Jupytext <br> <font size="20">Jupyter notebooks as text documents</font>
+subtitle: PyParis 2018
+author: Marc Wouts - Capital Fund Management
+date: November 14, 2018
+output: 
+  ioslides_presentation:
+    widescreen: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = TRUE)
+```
+
+# Outline
+
+## Outline
+
+Presentation is being prepared!
+<br>
+
+Please come back soon
+
+
+# Thanks!
