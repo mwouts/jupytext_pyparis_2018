@@ -1,0 +1,6 @@
+jupytext
+plotly
+pandas
+tables
+ipywidgets
+wbdata
