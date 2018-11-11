@@ -1,0 +1,6 @@
+.idea
+*_cache
+*_files
+.ipynb_checkpoints
+.Rproj.user
+.Rhistory
