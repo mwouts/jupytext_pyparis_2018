@@ -4,3 +4,4 @@ pandas
 tables
 ipywidgets
 wbdata
+bash_kernel
