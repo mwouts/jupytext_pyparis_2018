@@ -4,3 +4,6 @@ set -ex
 
 # Install the bash kernel
 python -m bash_kernel.install
+
+# Trust our notebook
+jupyter trust notebook/Greenhouse_gas_emissions.ipynb
