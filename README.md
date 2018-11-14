@@ -1,7 +1,18 @@
 # Jupytext at PyParis 2018
 
-This repository contains:
-- The [slide deck](https://mwouts.github.io/jupytext_pyparis_2018/slides/Jupytext.html) for the talk and the corresponding [source files](https://github.com/mwouts/jupytext_pyparis_2018/tree/master/slides),
-- The [demo script and material](https://github.com/mwouts/jupytext_pyparis_2018/tree/master/demo), and a [binder](https://mybinder.org/v2/gh/mwouts/jupytext_pyparis_2018/master?filepath=demo) on that folder (open a terminal there to run the demo step by step),
-- And the complete [example notebook](https://github.com/mwouts/jupytext_pyparis_2018/tree/master/notebook), also rendered on [nbviewer](https://nbviewer.jupyter.org/github/mwouts/jupytext_pyparis_2018/blob/master/notebook/Greenhouse_gas_emissions.ipynb) and on 
-[binder](https://mybinder.org/v2/gh/mwouts/jupytext_pyparis_2018/master?filepath=notebook/Greenhouse_gas_emissions.ipynb).
+[![PyParis](img/PyParis.png)]([PyParis](http://pyparis.org/)
+
+I am excited to present [Jupytext](https://github.com/mwouts/jupytext/blob/master/README.md) at the PyParis 2018 conference!
+
+Click on the below to open the slide deck:
+
+[![Slide deck](img/presentation.svg)](https://mwouts.github.io/jupytext_pyparis_2018/slides/Jupytext.html)
+
+This repository also contains:
+- The [source files](https://github.com/mwouts/jupytext_pyparis_2018/tree/master/slides) for the presentation.
+- The [demo script and material](https://github.com/mwouts/jupytext_pyparis_2018/tree/master/demo) . Use our binder to run the demo step-by-step:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mwouts/jupytext_pyparis_2018/master?filepath=demo).
+- The _Greenhouse gas emissions_ [notebook](https://github.com/mwouts/jupytext_pyparis_2018/tree/master/notebook):
+  - Read the notebook on Jupyter Notebook Viewer: [![nbviewer](https://img.shields.io/badge/view%20on-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/mwouts/jupytext_pyparis_2018/blob/master/notebook/Greenhouse_gas_emissions.ipynb).
+  - Run our notebook and use its interactive metric explorer with Binder:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mwouts/jupytext_pyparis_2018/master?filepath=Greenhouse_gas_emissions.ipynb).
