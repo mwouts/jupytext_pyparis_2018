@@ -71,12 +71,16 @@ jupytext --to ipynb --update Greenhouse_gas_emissions.py
 # NOTEBOOK: Refresh
 # - Outputs of unchanged input cells are preserved.
 # - Python variables are preserved.
+#
+# NOTEBOOK: Run the missing cells
 
 git commit -am 'Changed order of args in download_once'
 
 # GITHUB DESKTOP: Change is clear
 #
-# NOTEBOOK (Tree view): Compare notebook and script sizes.
+# Compare notebook and script sizes:
+
+ls -l Greenhouse_gas_emissions.*
 
 # # Demo II: Jupytext in Jupyter, and paired notebooks
 
@@ -105,6 +109,8 @@ rm Greenhouse_gas_emissions.py
 #
 # Then Alice saves the notebook: the py file is created automatically.
 
+ls -l Greenhouse_gas_emissions.*
+
 git commit -am 'Using paired notebooks'
 
 # # Demo III: Collaborate with Jupytext
@@ -123,10 +129,12 @@ git config user.name Bob
 git checkout -b bob
 
 # NOTEBOOK: Close and remove ipynb: Assume only py was shared.
-#
-# NOTEBOOK: Re-open and run the `py` file.
 
 rm Greenhouse_gas_emissions.ipynb
+
+# NOTEBOOK: Re-open and run the `py` file. Save. The `ipynb` file is regenerated.
+
+ls -l Greenhouse_gas_emissions.*
 
 # Bob contributes! We emulate this contribution
 # by copying the updated representation of the notebook.
@@ -138,9 +146,6 @@ cp 2_bob/Greenhouse_gas_emissions.py .
 # Bob commits and pushes to the common repository
 
 git commit -am 'Plot and comment CO2 emissions'
-
-# Bob pushes to the common repository
-
 git checkout master
 git rebase bob
 
@@ -167,6 +172,8 @@ git rebase master
 #
 # NOTEBOOK: Refresh notebook in Jupyter. Run it all. Save.
 
+git status
+
 git add Greenhouse_gas_emissions.*
 git rebase --continue
 
@@ -176,3 +183,5 @@ git checkout master
 git rebase alice
 
 # And we're done!
+#
+# GITHUB DESKTOP: View merge
