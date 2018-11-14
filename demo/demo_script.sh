@@ -1,22 +1,3 @@
-# ---
-# jupyter:
-#   jupytext:
-#     text_representation:
-#       extension: .sh
-#       format_name: light
-#       format_version: '1.3'
-#       jupytext_version: 0.8.5
-#   kernelspec:
-#     display_name: Bash
-#     language: bash
-#     name: bash
-#   language_info:
-#     codemirror_mode: shell
-#     file_extension: .sh
-#     mimetype: text/x-sh
-#     name: bash
-# ---
-
 # # Setup
 #
 # ## Creating the Python environment
@@ -59,6 +40,7 @@ cp 1_alice/Greenhouse_gas_emissions.ipynb .
 cp 1_alice/world_bank_indicators.hdf .
 
 # NOTEBOOK: Quick overview of the CO2 notebook.
+#
 # NOTEBOOK: Run the notebook (we will need the Python variables).
 #
 # ## Notebook as script
@@ -66,7 +48,7 @@ cp 1_alice/world_bank_indicators.hdf .
 jupytext --to py Greenhouse_gas_emissions.ipynb
 
 # PYCHARM: Quick overview of Python representation.
-
+#
 # ## Commit initial version
 
 git config user.name Alice
@@ -81,6 +63,7 @@ git commit -m 'Initial notebook by Alice'
 # (move argument 'path' to second position).
 
 # Then update input cells in ipynb file
+
 jupytext --to ipynb --update Greenhouse_gas_emissions.py
 
 # ## Refresh the notebook
