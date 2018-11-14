@@ -7,7 +7,7 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.3'
-#       jupytext_version: 0.8.4
+#       jupytext_version: 0.8.5
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -26,16 +26,10 @@
 
 # # Why worry?
 #
-# From the 2015 Paris Agreement [website](https://unfccc.int/process-and-meetings/the-paris-agreement/the-paris-agreement):
-# > The Paris Agreement central aim is to strengthen the global response to the threat of climate change by keeping a global temperature rise this century well below 2 degrees Celsius above pre-industrial levels and to pursue efforts to limit the temperature increase even further to 1.5 degrees Celsius.
-#
 # From PWC's [Low Carbon Economy Index 2018](https://www.pwc.co.uk/services/sustainability-climate-change/insights/low-carbon-economy-index.html):
 # > Carbon intensity continued to fall at a rate consistent with the previous few years, at 2.6%. But even this falls short of the 3% average decarbonisation rate needed to meet the weak national targets pledged in the 2015 Paris Agreement. The gap between the current decarbonisation rate and that needed to limit global warming to two degrees is widening. It’s now 6.4% per year for the rest of this century.
 #
 # > In contrast with our report last year, not one of the G20 countries achieved the 6.4% rate required to limit warming to two degrees this year. That goal is slipping further out of reach – at current levels of decarbonisation, the global carbon budget for two degrees will run out in 2036.
-#
-# Also worrying: from the World Wild Life's [Living Planet Report 2018](https://www.worldwildlife.org/pages/living-planet-report-2018):
-# > On average, we’ve seen an astonishing 60% decline in the size of populations of mammals, birds, fish, reptiles, and amphibians in just over 40 years, according to WWF’s Living Planet Report 2018. The top threats to species identified in the report link directly to human activities, including habitat loss and degradation and the excessive use of wildlife such as overfishing and overhunting.
 #
 # Not sure we are on the right track! But maybe you want to check by yourself.
 #
@@ -49,11 +43,6 @@
 import os
 import pandas as pd
 import wbdata as wb
-import plotly.graph_objs as go
-import plotly.offline as offline
-
-# Activate plotly
-offline.init_notebook_mode()
 
 # My preferences for printing DataFrames: few rows, and many columns.
 pd.options.display.max_rows = 6
@@ -99,7 +88,7 @@ indicators = {
 
 world_bank_data = download_once(indicators, 'world_bank_indicators.hdf')
 
-world_bank_data
+world_bank_data.loc['World']
 
 
 # +
@@ -122,6 +111,17 @@ def regions(metric):
     return value
 
 
+# -
+
+# +
+import plotly.graph_objs as go
+import plotly.offline as offline
+
+offline.init_notebook_mode()
+# -
+
+# # Metric explorer
+
 # +
 from ipywidgets import widgets
 from IPython.display import display
@@ -131,7 +131,6 @@ metric_selector = widgets.Dropdown(
     value='CO2 emissions (kt)',
     description='Metric')
 
-# +
 metric_explorer = go.FigureWidget()
 
 
@@ -161,9 +160,9 @@ display(metric_explorer)
 # -
 
 
-# # Greenhouse gas emissions
+# # A few plots
 
-# ## The place of CO2 among the Greenhouse gas emissions
+# ## Greenhouse gas emissions
 
 # Greenhouse gas emissions have increased steadily over the last decades. CO2 emissions are two thirds of the total emissions, and were multiplied by 3.5 since the sixties.
 
@@ -187,27 +186,6 @@ layout = go.Layout(title='Greenhouse gas emissions', barmode='stack',
 offline.iplot(go.Figure(data=data, layout=layout), show_link=False)
 # -
 
-# ## The growth of CO2 emissions from solid fuel
-#
-# CO2 emissions from liquid fuel increased at a strong pace between 1960 and 1980. In the recent period, the most impressive growth was that of emissions from solid fuel. Emissions from gaseous fuel increased regularly over the past 50 years.
-
-# +
-data = []
-
-add_line('CO2 emissions (kt)', 'Total', line=dict(dash='dash'))
-add_line('CO2 emissions from solid fuel consumption (kt)', 'From solid fuel', stackgroup='CO2')
-add_line('CO2 emissions from liquid fuel consumption (kt)', 'From liquid fuel', stackgroup='CO2')
-add_line('CO2 emissions from gaseous fuel consumption (kt)', 'From gaseous fuel', stackgroup='CO2')
-
-layout = go.Layout(title='CO2 emissions', barmode='stack',
-                   yaxis=dict(title='Kilo Tonnes'))
-
-offline.iplot(go.Figure(data=data, layout=layout), show_link=False)
-# -
-
-
-# # Greenhouse gas emissions versus GDP and Population
-
 # ## Population, per world region
 
 # CO2 emissions increase at a larger pace than population.
@@ -221,20 +199,6 @@ offline.iplot(go.Figure(data=data,
                         layout=go.Layout(
                             title=metric_name,
                             yaxis=dict(title='Population'))), show_link=False)
-
-# ## CO2 equivalent emissions 
-
-# Largest contributors to Greenhouse gas emissions are Europe, North America and East Asia. Developing countries have their emissions increasing faster than Europe, were emissions tend to decrease, and North America.
-
-metric_name = 'Total greenhouse gas emissions (kt of CO2 equivalent)'
-metric = world_bank_data[metric_name].dropna()
-data = [go.Scatter(x=metric.loc[region].index.date, y=metric.loc[region], name=region,
-                   stackgroup='World') for region in zones]
-add_line(metric_name, 'Total', line=dict(dash='dash'))
-offline.iplot(go.Figure(data=data,
-                        layout=go.Layout(
-                            title=metric_name,
-                            yaxis=dict(title='Kilo Tonnes'))), show_link=False)
 
 # ## Gross domestic product
 
@@ -278,3 +242,5 @@ offline.iplot(go.Figure(data=data,
 # ## Innovate
 #
 # Identifying more efficient CO2 processes could allow to preserve growth, and still reduce emissions.
+
+

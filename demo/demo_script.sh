@@ -1,8 +1,28 @@
+# ---
+# jupyter:
+#   jupytext:
+#     text_representation:
+#       extension: .sh
+#       format_name: light
+#       format_version: '1.3'
+#       jupytext_version: 0.8.5
+#   kernelspec:
+#     display_name: Bash
+#     language: bash
+#     name: bash
+#   language_info:
+#     codemirror_mode: shell
+#     file_extension: .sh
+#     mimetype: text/x-sh
+#     name: bash
+# ---
+
 # # Setup
 #
 # ## Creating the Python environment
 #
-# The Python environment for our _Greenhouse gas emissions_ notebook was created with
+# The Python environment for our _Greenhouse gas emissions_
+# notebook was created with
 #
 # ```bash
 # conda create -n python3 jupyterlab plotly pandas pytables ipywidgets
@@ -17,52 +37,54 @@ cd ../demo && rm .git .gitignore Greenhouse_gas_emissions.* world_bank_indicator
 
 # ## Git init
 
-# +
 git init
 git config user.email "jupytext@demo.com"
-git config user.name "demo"
+git config user.name Init
 echo '.ipynb_checkpoints' >> .gitignore
 echo '*alice*' >> .gitignore
 echo '*bob*' >> .gitignore
 echo 'demo_script.sh' >> .gitignore
 git add .gitignore
-git commit -m 'Ignore Alice and Bob folders'
+git commit -m 'Ignore source folders'
 
-#'git lg' from https://coderwall.com/p/euwpig/a-better-git-log
-git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-# -
 
 # # Demo I: Refactor a notebook
 #
 # ## Alice's initial contribution
 #
-# We use Alice's initial version of the notebook, from folder `1_alice`.
+# We use Alice's initial version of the notebook
+# from folder `1_alice`.
 
 cp 1_alice/Greenhouse_gas_emissions.ipynb .
 cp 1_alice/world_bank_indicators.hdf .
 
-# NOTEBOOK: Quick overview of the CO2 notebook
+# NOTEBOOK: Quick overview of the CO2 notebook.
+# NOTEBOOK: Run the notebook (we will need the Python variables).
 #
 # ## Notebook as script
 
 jupytext --to py Greenhouse_gas_emissions.ipynb
 
+# PYCHARM: Quick overview of Python representation.
+
 # ## Commit initial version
 
+git config user.name Alice
 git checkout -b alice
 git add Greenhouse_gas_emissions.*
 git add world_bank_indicators.hdf
-git commit -am 'Initial notebook by Alice'
+git commit -m 'Initial notebook by Alice'
 
 # ## Refactor the script
 
 # PYCHARM: Change signature of 'download_once'
+# (move argument 'path' to second position).
 
 # Then update input cells in ipynb file
 jupytext --to ipynb --update Greenhouse_gas_emissions.py
 
 # ## Refresh the notebook
-
+#
 # NOTEBOOK: Refresh
 # - Outputs of unchanged input cells are preserved.
 # - Python variables are preserved.
@@ -70,18 +92,12 @@ jupytext --to ipynb --update Greenhouse_gas_emissions.py
 git commit -am 'Changed order of args in download_once'
 
 # GITHUB DESKTOP: Change is clear
-
-# ## An application: up-to-date examples
 #
-# Example notebook distributed as a script in a Python package: the notebook is automatically updated when the package is refactored.
+# NOTEBOOK (Tree view): Compare notebook and script sizes.
 
-# # Demo II: Paired notebooks
+# # Demo II: Jupytext in Jupyter, and paired notebooks
 
-# ## Jupyter configuration
-#
-# We first remove the Python script:
-
-rm Greenhouse_gas_emissions.py
+# ## Configure Jupyter
 
 # Now we activate paired notebooks by adding
 # ```
@@ -93,17 +109,26 @@ rm Greenhouse_gas_emissions.py
 #
 # We need to restart `jupyter notebook` or `jupyter lab`.
 #
-# We add `"jupytext": {"formats": "ipynb,py"},` to the metadata of our notebook. 
+# Now any Python (Bash, R, Julia,...) script opens as a notebook!
+
+# ## Paired notebooks
 #
-# Save the notebook: the py file is created automatically.
+# Alices removes the Python representation of her notebook:
+
+rm Greenhouse_gas_emissions.py
+
+# NOTEBOOK: configure the notebook to use a pair of `ipynb` and `py` files:  
+# add `"jupytext": {"formats": "ipynb,py"},` to the notebook metadata. 
+#
+# Then Alice saves the notebook: the py file is created automatically.
+
+git commit -am 'Using paired notebooks'
 
 # # Demo III: Collaborate with Jupytext
 # ## First contribution by Alice
 #
-# Alice commits the shared notebook. Sharing the .py file would be enough - later we will remove the ipynb file.
-
-git commit -am 'Using paired notebooks'
-
+# Alice commits the shared notebook. Sharing the .py file is enough.
+#
 # She pushes to the common repository
 
 git checkout master
@@ -111,34 +136,42 @@ git rebase alice
 
 # ## Second contribution by Bob
 
+git config user.name Bob
 git checkout -b bob
 
-# NOTEBOOK: Close and remove ipynb: Assume only py was shared. Re-open and run the `py` file.
+# NOTEBOOK: Close and remove ipynb: Assume only py was shared.
+#
+# NOTEBOOK: Re-open and run the `py` file.
 
 rm Greenhouse_gas_emissions.ipynb
 
-# Bob contributes! We emulate this contribution by copying the updated script.
+# Bob contributes! We emulate this contribution
+# by copying the updated representation of the notebook.
 
 cp 2_bob/Greenhouse_gas_emissions.py .
 
-# NOTEBOOK: Open 'py' notebook, run (read) and save
+# NOTEBOOK: Refresh `py` notebook, run (read) and save
 #
 # Bob commits and pushes to the common repository
 
 git commit -am 'Plot and comment CO2 emissions'
 
-# And pushes to the common repository
+# Bob pushes to the common repository
+
 git checkout master
 git rebase bob
 
 # ## Simultaneous contribution by Alice
+#
+# Alice contributes an interactive application with Python widgets.
 
+git config user.name Alice
 git checkout alice
 cp 3_alice/Greenhouse_gas_emissions.py .
 
 # NOTEBOOK: Refresh, run and save notebook
 
-git commit -am 'Metric explorer'
+git commit -am 'Interactive metric explorer'
 
 # ## Resolving the conflict on the script
 
@@ -147,9 +180,9 @@ git commit -am 'Metric explorer'
 
 git rebase master
 
-# PYCHARM: Resolve the conflict on the py file
+# PYCHARM: Resolve the conflict on the py file.
 #
-# NOTEBOOK: Refresh notebook in Jupyter
+# NOTEBOOK: Refresh notebook in Jupyter. Run it all. Save.
 
 git add Greenhouse_gas_emissions.*
 git rebase --continue
@@ -160,7 +193,3 @@ git checkout master
 git rebase alice
 
 # And we're done!
-
-# ## Git log
-
-git lg
