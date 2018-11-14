@@ -10,6 +10,7 @@
 # activate python3
 # conda install -c conda-forge jupytext nbdime jupyter_contrib_nbextensions
 # pip install wbdata
+# jupyter nbextension enable toc2/main
 # ```
 #
 # ## Cleanup
