@@ -1,10 +1,8 @@
 # Jupytext at PyParis 2018
 
-![PyParis](img/PyParis.png)
+![PyParis](img/PyParis.png | height=200)
 
-I am excited to present [Jupytext](https://github.com/mwouts/jupytext/blob/master/README.md) at the [PyParis](http://pyparis.org/) 2018 conference!
-
-Click on the below to open the slide deck:
+I am excited to present [Jupytext](https://github.com/mwouts/jupytext/blob/master/README.md) at the [PyParis](http://pyparis.org/) 2018 conference! Click on the below to open the slide deck:
 
 [![Slide deck](img/presentation.png)](https://mwouts.github.io/jupytext_pyparis_2018/slides/Jupytext.html)
 
