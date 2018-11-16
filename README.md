@@ -2,7 +2,7 @@
 
 I am excited to present [Jupytext](https://github.com/mwouts/jupytext/blob/master/README.md) at the [PyParis](http://pyparis.org/) 2018 conference! Click on the below to open the slide deck:
 
-| [![Slide deck](img/presentation.png)](https://mwouts.github.io/jupytext_pyparis_2018/slides/Jupytext.html) | ![PyParis](img/PyParis.png) |
+| [![Slide deck](img/presentation.png)](https://mwouts.github.io/jupytext_pyparis_2018/slides/Jupytext.html) | [![PyParis](img/PyParis.png)](http://pyparis.org/) |
 | --- | --- |
 
 This repository also contains:
