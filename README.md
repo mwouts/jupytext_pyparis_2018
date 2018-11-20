@@ -1,12 +1,7 @@
 # Jupytext at PyParis 2018
 
-I am excited to present [Jupytext](https://github.com/mwouts/jupytext/blob/master/README.md) at the [PyParis](http://pyparis.org/) 2018 conference!
-
-[![PyParis](img/PyParis.png)](http://pyparis.org/)
-
-## Presentation
-
-Click on the below to open the slide deck, or view the presentation on Youtube:
+On November 14, 2018 I had the opportunity to present  [Jupytext](https://github.com/mwouts/jupytext/blob/master/README.md) at the [PyParis](http://pyparis.org/) 2018 conference.
+Click on the below to open the slide deck, or to view the presentation on Youtube:
 
 | [![Slide deck](img/presentation.png)](https://mwouts.github.io/jupytext_pyparis_2018/slides/Jupytext.html) | [![Youtube ](https://img.youtube.com/vi/y-VEZenk824/0.jpg)](https://www.youtube.com/watch?v=y-VEZenk824) |
 | --- | --- |
@@ -15,7 +10,7 @@ Click on the below to open the slide deck, or view the presentation on Youtube:
 
 In the presentation I demo Jupytext and show how you can use it to
 - represent a Jupyter notebook as a script,
-- reversely, open a Python, R, Bash, etc script in the form of a Jupyter notebook,
+- reversely, open and run a Python, R, Bash (etc) script in the form of a Jupyter notebook,
 - refactor a notebook represented as a script, and update the original notebook,
 - combine multiple contributions to a notebook.
 
