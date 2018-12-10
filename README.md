@@ -23,4 +23,4 @@ The repository also contains:
 - The _Greenhouse gas emissions_ [notebook](https://github.com/mwouts/jupytext_pyparis_2018/tree/master/notebook):
   - Read the notebook on the Jupyter Notebook Viewer: [![nbviewer](https://img.shields.io/badge/view%20on-nbviewer-orange.svg)](https://nbviewer.jupyter.org/github/mwouts/jupytext_pyparis_2018/blob/master/notebook/Greenhouse_gas_emissions.ipynb).
   - Run our notebook and use its interactive metric explorer with Binder:
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mwouts/jupytext_pyparis_2018/master?filepath=Greenhouse_gas_emissions.ipynb).
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mwouts/jupytext_pyparis_2018/master?filepath=notebook/Greenhouse_gas_emissions.ipynb).
